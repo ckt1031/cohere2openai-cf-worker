@@ -110,10 +110,7 @@ export async function handleChatCompletions(
   });
 
   if (body.stream) {
-    const streamData = await cohere.chatStream({
-      model: "command",
-      message: "Tell me a story in 5 parts!",
-    });
+    const streamData = await cohere.chatStream(apiRequestBody);
 
     return streamSSE(c, async (stream) => {
       for await (const chat of streamData) {

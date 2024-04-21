@@ -1,4 +1,4 @@
-name = "my-app"
+name = "cohere2openai"
 compatibility_date = "2023-12-01"
 
 # [vars]
