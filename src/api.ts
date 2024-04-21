@@ -64,6 +64,8 @@ export async function handleChatCompletions(
     message: "",
     model: body.model,
     chatHistory: [],
+    frequencyPenalty: body.frequency_penalty ?? 0.0,
+    presencePenalty: body.presence_penalty ?? 0.0,
     stream: body.stream ?? false,
     ...(body.max_tokens && { maxTokens: body.max_tokens }),
     ...(body.temperature && { temperature: body.temperature }),
