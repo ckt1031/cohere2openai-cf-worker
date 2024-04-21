@@ -15,7 +15,7 @@ This is a simple Cloudflare Worker that transform Cohere API to OpenAI API, easi
 
 1. Clone this repository: `git clone https://github.com/ckt1031/cohere2openai-cf-worker.git --depth=1`
 2. Run `npm install` to install dependencies
-3. Run `npm deploy` to deploy to Cloudflare Workers
+3. Run `npm run deploy` to deploy to Cloudflare Workers
 
 ## License
 
