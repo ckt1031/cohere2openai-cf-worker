@@ -9,14 +9,13 @@ type CohereRequestBody = Cohere.ChatRequest & {
 };
 
 function getMessageContent(message: OpenAI.ChatCompletionMessageParam) {
-  if (!message.content) {
-    throw new Error("Message content is required.");
-  }
-
+  if (!message.content) throw new Error("Message content is required.");
+  
   if (typeof message.content === "string") {
     return message.content;
   } else {
     let messageContent = "";
+    
     // Only grab the text from the message
     for (const content of message.content) {
       if (content.type === "text") {
@@ -60,15 +59,20 @@ export async function handleChatCompletions(
 
   const body = await c.req.json<OpenAI.ChatCompletionCreateParams>();
 
+  // There will be *-internet, so check for that, and remove it
+  const useInternet = body.model.includes("-internet");
+  const model = body.model.replace("-internet", "");
+
   const apiRequestBody: CohereRequestBody = {
     message: "",
-    model: body.model,
+    model,
     chatHistory: [],
     frequencyPenalty: body.frequency_penalty ?? 0.0,
     presencePenalty: body.presence_penalty ?? 0.0,
     stream: body.stream ?? false,
     ...(body.max_tokens && { maxTokens: body.max_tokens }),
     ...(body.temperature && { temperature: body.temperature }),
+    connectors: useInternet ? [{ id: "web-search" }] : [],
   };
 
   for (const message of body.messages) {
