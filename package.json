@@ -5,8 +5,8 @@
   },
   "dependencies": {
     "cohere-ai": "^7.9.5",
-    "hono": "^4.2.5",
-    "openai": "^4.38.2"
+    "hono": "^4.2.9",
+    "openai": "^4.38.5"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "latest",
