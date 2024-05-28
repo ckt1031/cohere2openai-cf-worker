@@ -1,7 +1,6 @@
 name: Deploy Worker
 on:
   push:
-  pull_request:
   repository_dispatch:
 
 jobs:
