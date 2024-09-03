@@ -4,9 +4,9 @@
     "deploy": "wrangler deploy --minify src/index.ts"
   },
   "dependencies": {
-    "cohere-ai": "^7.9.5",
-    "hono": "^4.2.9",
-    "openai": "^4.38.5"
+    "cohere-ai": "^7.13.0",
+    "hono": "^4.5.10",
+    "openai": "^4.57.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "latest",
